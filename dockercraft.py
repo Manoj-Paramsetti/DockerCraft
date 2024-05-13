@@ -16,7 +16,7 @@ def main(stdscr, docker_compose_file):
     height, width = stdscr.getmaxyx()
     
     # Display instructions
-    stdscr.addstr(1, 1, "Use arrow keys to navigate, Space to select, and Enter to submit")
+    stdscr.addstr(1, 1, "Use arrow keys to navigate, Space to select, and Enter to submit. The services marked with [*] are mandatory.")
     
     # Load Docker Compose file
     with open(docker_compose_file, 'r') as file:
@@ -39,20 +39,26 @@ def main(stdscr, docker_compose_file):
 
         # Display instructions
         stdscr.addstr(0, 0, "Use arrow keys to navigate, Space to select, and Enter to submit")
-    
+        stdscr.addstr(2, 2, "SERVICES") 
         # Calculate the visible items based on the scroll position
         visible_items = services[scroll_top:scroll_top + height - 3]
         
         # Display checklist items
         for i, item in enumerate(visible_items):
             x = 2
-            y = i + 2
+            y = i + 3
             if i == current_row - 2:
                 # Highlight the current item
                 stdscr.attron(curses.A_REVERSE)
+                try: 
+                    if "mandatory" in docker_compose["services"][item]["annotations"].keys(): item = f"{item} [*]"
+                except: pass
                 stdscr.addstr(y, x, item)
                 stdscr.attroff(curses.A_REVERSE)
             else:
+                try: 
+                    if "mandatory" in docker_compose["services"][item]["annotations"].keys(): item = f"{item} [*]"
+                except: pass
                 stdscr.addstr(y, x, item)
             # Display checkmark for selected items
             if selected[i + scroll_top]:

@@ -16,4 +16,4 @@ else:
     # Delete the requirements.txt file
     os.system("rm requirements.txt")
 # save dockercraft file to /usr/bin
-os.system("sudo wget -O /usr/bin/dockercraft https://raw.githubusercontent.com/Manoj-Paramsetti/DockerCraft/main/dockercraft.py")
+os.system("sudo wget -O /usr/local/bin/dockercraft https://raw.githubusercontent.com/Manoj-Paramsetti/DockerCraft/main/dockercraft.py && sudo chmod +x /usr/local/bin/dockercraft")

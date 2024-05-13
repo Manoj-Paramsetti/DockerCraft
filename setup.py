@@ -11,7 +11,7 @@ def check_imports():
 if check_imports():
     print("All imports are available")
 else:
-    os.system("wget https://raw.githubusercontent.com/AnshumanFauzdar/Python-CLI-App/main/requirements.txt")
+    os.system("wget https://raw.githubusercontent.com/Manoj-Paramsetti/DockerCraft/main/requirements.txt")
     os.system("pip install -r requirements.txt --break-system-packages")
     # Delete the requirements.txt file
     os.system("rm requirements.txt")

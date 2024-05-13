@@ -15,4 +15,5 @@ else:
     os.system("pip install -r requirements.txt --break-system-packages")
     # Delete the requirements.txt file
     os.system("rm requirements.txt")
-    os.system("wget ")
+# save dockercraft file to /usr/bin
+os.system("sudo wget -O /usr/bin/dockercraft https://raw.githubusercontent.com/Manoj-Paramsetti/DockerCraft/main/dockercraft.py")
